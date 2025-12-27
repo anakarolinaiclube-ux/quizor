@@ -17,6 +17,7 @@
         /* --- DESIGN SYSTEM --- */
         :root {
             --primary-red: #c8102e; 
+            --wine-deep: #630b18; /* Nova cor baseada no background */
             --dark-text: #1a1a1a;
             --light-text: #555555;
             --gold: #f4c430;
@@ -31,7 +32,6 @@
         body {
             font-family: var(--font-main);
             color: var(--dark-text);
-            /* Background Vinho em Gradiente */
             background: linear-gradient(135deg, #2e0509 0%, #630b18 100%);
             min-height: 100vh;
             display: flex;
@@ -64,14 +64,13 @@
         }
         .progress-bar {
             height: 100%;
-            background: var(--primary-red);
+            background: var(--wine-deep); /* Ajustado para vinho */
             width: 0%;
             transition: width 0.4s ease;
         }
 
-        /* Tipografia */
+        /* Tipografia Header */
         h1 {
-            /* AJUSTE 1: Fonte Poppins (font-main) */
             font-family: var(--font-main);
             font-weight: 700;
             font-size: 1.8rem;
@@ -87,15 +86,12 @@
             line-height: 1.8;
         }
 
-        /* --- ANIMAÇÕES AJUSTADAS --- */
-        
-        /* Efeito: Desespero (Tremelique/Jitter) */
+        /* ANIMAÇÕES DE TEXTO (Header) */
         .word-despair {
             display: inline-block;
             font-style: italic;
             color: #777;
             position: relative;
-            /* Animação rápida, pausa longa para não cansar */
             animation: tremor 2s infinite; 
         }
 
@@ -106,14 +102,12 @@
             15% { transform: translate(-1px, 0); opacity: 0.8; }
             20% { transform: translate(1px, 0); }
             25% { transform: translate(0, 0); opacity: 1; }
-            100% { transform: translate(0, 0); } /* Pausa até reiniciar */
+            100% { transform: translate(0, 0); } 
         }
 
-        /* Efeito: Poder (Dourado + Pulsação) */
         .word-power {
             display: inline-block;
             font-weight: 800;
-            /* AJUSTE 2: Cor Dourada */
             color: var(--gold);
             position: relative;
             animation: power-pulse 3s infinite ease-in-out;
@@ -125,7 +119,7 @@
             100% { transform: scale(1); text-shadow: 0 0 5px rgba(244, 196, 48, 0.2); }
         }
 
-        /* Perguntas e Opções */
+        /* PERGUNTAS */
         .question-box {
             display: none; 
             animation: fadeIn 0.5s ease;
@@ -160,23 +154,29 @@
         }
 
         .option-btn:hover {
-            border-color: var(--primary-red);
+            border-color: var(--wine-deep);
             background-color: var(--bg-blush);
-            color: var(--primary-red);
+            color: var(--wine-deep);
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* Tela de Resultado */
+        /* --- TELA DE RESULTADO (Ajustada) --- */
         .result-box {
             display: none;
             animation: fadeIn 0.8s ease;
             text-align: center;
         }
         
+        .result-icon {
+            font-size: 3rem;
+            color: var(--wine-deep); /* Ajustado */
+            margin-bottom: 10px;
+        }
+
         .result-title {
             font-size: 1.5rem;
-            color: var(--primary-red);
+            color: var(--wine-deep); /* Ajustado para cor Vinho */
             font-family: var(--font-serif);
             margin-bottom: 20px;
             border-bottom: 1px solid #eee;
@@ -190,19 +190,57 @@
             color: #444;
         }
         
+        /* ANIMAÇÃO DO QUEBRA-CABEÇA */
+        .puzzle-disconnect {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px 0;
+            gap: 2px;
+            opacity: 0.7;
+        }
+        
+        .puzzle-piece {
+            font-size: 1.8rem;
+            color: #888; /* Cor neutra para representar a "velha identidade" desbotada */
+            transition: all 1s ease;
+        }
+
+        /* Peça Esquerda se afastando */
+        .p-left {
+            animation: disconnect-left 4s infinite ease-in-out;
+            color: var(--wine-deep); /* A peça da identidade se afastando */
+        }
+        
+        /* Peça Direita se afastando */
+        .p-right {
+            animation: disconnect-right 4s infinite ease-in-out;
+            transform: rotate(180deg); /* Para parecer que encaixava */
+        }
+
+        @keyframes disconnect-left {
+            0%, 100% { transform: translateX(0); opacity: 1; }
+            50% { transform: translateX(-10px) rotate(-5deg); opacity: 0.5; }
+        }
+        
+        @keyframes disconnect-right {
+            0%, 100% { transform: translateX(0) rotate(180deg); opacity: 1; }
+            50% { transform: translateX(10px) rotate(185deg); opacity: 0.5; }
+        }
+
         .result-highlight {
             background: var(--bg-blush);
             padding: 15px;
-            border-left: 3px solid var(--primary-red);
+            border-left: 3px solid var(--wine-deep);
             margin: 20px 0;
             font-weight: 500;
             font-size: 0.9rem;
             text-align: left;
         }
 
-        /* Botão Final */
+        /* BOTÃO CTA (Ajustado) */
         .btn-cta {
-            background-color: var(--primary-red);
+            background-color: var(--wine-deep); /* Ajustado para cor Vinho */
             color: white;
             display: block;
             width: 100%;
@@ -215,18 +253,17 @@
             cursor: pointer;
             transition: background 0.3s;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+            box-shadow: 0 4px 15px rgba(99, 11, 24, 0.4); /* Sombra vinho */
             text-decoration: none;
             margin-top: 20px;
         }
-        .btn-cta:hover { background-color: #a00d25; transform: translateY(-2px); }
+        .btn-cta:hover { background-color: #4a0810; transform: translateY(-2px); }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobile */
         @media (max-width: 480px) {
             .quiz-card { padding: 30px 20px; }
             h1 { font-size: 1.5rem; }
@@ -258,12 +295,20 @@
 
         <!-- RESULTADO (Oculto inicialmente) -->
         <div id="quiz-result" class="result-box">
-            <div style="font-size: 3rem; color: var(--primary-red); margin-bottom: 10px;"><i class="fas fa-exclamation-circle"></i></div>
+            <div class="result-icon"><i class="fas fa-exclamation-circle"></i></div>
             <div class="result-title">Diagnóstico: Sua chama está quase apagada.</div>
             
             <div class="result-text">
                 <p><strong>Você não está vivendo, está sobrevivendo no "modo invisível".</strong></p>
-                <p>Suas respostas indicam que você se desconectou da sua identidade. Você tem aceitado menos do que merece, sua postura corporal transmite insegurança e sua aparência atual não reflete a mulher poderosa que existe aí dentro, adormecida.</p>
+                <p>Suas respostas indicam que você se desconectou da sua identidade.</p>
+                
+                <!-- Elemento de Quebra-Cabeça se Desencaixando -->
+                <div class="puzzle-disconnect">
+                    <i class="fas fa-puzzle-piece puzzle-piece p-left"></i>
+                    <i class="fas fa-puzzle-piece puzzle-piece p-right"></i>
+                </div>
+
+                <p>Você tem aceitado menos do que merece, sua postura corporal transmite insegurança e sua aparência atual não reflete a mulher poderosa que existe aí dentro, adormecida.</p>
                 
                 <div class="result-highlight">
                     O mundo trata você exatamente como você se trata. Se você se sente "apenas mais uma", é assim que os outros te veem.
@@ -273,7 +318,7 @@
                 <p>Você não precisa nascer de novo. Você precisa de um RESET. Em 30 dias, podemos reprogramar sua autoimagem, sua beleza e sua energia para que você se torne irreconhecível.</p>
             </div>
 
-            <a href="https://oresetfeminino.vercel.app/" class="btn-cta">QUERO INICIAR MEU RESET FEMININO AGORA</a>
+            <a href="https://oresetfeminino.vercel.app/" class="btn-cta">QUERO INICIAR MEU RESET AGORA</a>
         </div>
 
     </div>
