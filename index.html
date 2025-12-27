@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quiz: O Nível da Sua Presença</title>
     
-    <!-- Importando Fontes (Mesmas do Ebook/Site) -->
+    <!-- Importando Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,13 +14,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
-        /* --- DESIGN SYSTEM (Mantido para consistência) --- */
+        /* --- DESIGN SYSTEM --- */
         :root {
             --primary-red: #c8102e; 
             --dark-text: #1a1a1a;
             --light-text: #555555;
-            --bg-blush: #fff5f6;
+            --gold: #f4c430; /* Adicionado para o efeito de poder */
             --bg-offwhite: #fcfcfc;
+            --bg-blush: #fff5f6;
             --font-serif: 'Playfair Display', serif;
             --font-main: 'Poppins', sans-serif;
         }
@@ -30,7 +31,8 @@
         body {
             font-family: var(--font-main);
             color: var(--dark-text);
-            background-color: var(--bg-blush); /* Fundo blush para destacar o card branco */
+            /* ALTERAÇÃO: Background Vinho em Gradiente */
+            background: linear-gradient(135deg, #2e0509 0%, #630b18 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -44,7 +46,7 @@
             width: 100%;
             max-width: 600px;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(190, 20, 50, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Sombra ajustada para o fundo escuro */
             padding: 40px;
             position: relative;
             overflow: hidden;
@@ -71,20 +73,53 @@
         h1 {
             font-family: var(--font-serif);
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #000;
             line-height: 1.2;
         }
+        
+        /* ALTERAÇÃO: Estilo da intro e animações */
         p.intro {
-            font-size: 0.95rem;
+            font-size: 1.05rem; /* Levemente maior para impacto */
             color: var(--light-text);
-            margin-bottom: 30px;
-            line-height: 1.6;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        /* KEYFRAMES E CLASSES DE ANIMAÇÃO */
+        
+        /* Efeito: Desespero (Instabilidade/Fuga) */
+        .word-despair {
+            display: inline-block;
+            font-style: italic;
+            color: #777;
+            position: relative;
+            animation: tremor 4s infinite ease-in-out;
+        }
+
+        @keyframes tremor {
+            0%, 100% { opacity: 1; filter: blur(0px); transform: translateX(0); }
+            50% { opacity: 0.7; filter: blur(1px); transform: translateX(1px); }
+        }
+
+        /* Efeito: Poder (Expansão/Brilho) */
+        .word-power {
+            display: inline-block;
+            font-weight: 700;
+            color: var(--primary-red);
+            position: relative;
+            animation: power-pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes power-pulse {
+            0% { transform: scale(1); text-shadow: 0 0 0 rgba(244, 196, 48, 0); }
+            50% { transform: scale(1.1); text-shadow: 0 0 15px rgba(200, 16, 46, 0.2); letter-spacing: 1px; }
+            100% { transform: scale(1); text-shadow: 0 0 0 rgba(244, 196, 48, 0); }
         }
 
         /* Perguntas e Opções */
         .question-box {
-            display: none; /* Oculto por padrão, controlado via JS */
+            display: none; 
             animation: fadeIn 0.5s ease;
         }
         .question-box.active { display: block; }
@@ -199,7 +234,13 @@
         <div id="quiz-header">
             <div style="font-size: 0.8rem; color: #999; letter-spacing: 2px; margin-bottom: 5px;">DIAGNÓSTICO PESSOAL</div>
             <h1>Você está vivendo apenas 20% do seu potencial?</h1>
-            <p class="intro">Responda com honestidade brutal. Descubra se sua imagem e energia estão gritando "desespero" ou "poder". O resultado pode incomodar, mas é o primeiro passo para o renascimento.</p>
+            
+            <!-- ALTERAÇÃO: Novo Texto com Animações -->
+            <p class="intro">
+                Responda com honestidade brutal.<br>
+                Este diagnóstico separa quem vive no <span class="word-despair">desespero</span> de quem acessa o <span class="word-power">poder</span>.
+            </p>
+            
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
@@ -225,7 +266,7 @@
                 <p>Você não precisa nascer de novo. Você precisa de um RESET. Em 30 dias, podemos reprogramar sua autoimagem, sua beleza e sua energia para que você se torne irreconhecível.</p>
             </div>
 
-            <a href="https://oresetfeminino.vercel.app/" class="btn-cta">QUERO INICIAR MEU RESET FEMININO AGORA</a>
+            <a href="https://SEU-LINK-DA-PAGINA-DE-VENDAS.com" class="btn-cta">QUERO INICIAR MEU RESET FEMININO AGORA</a>
         </div>
 
     </div>
